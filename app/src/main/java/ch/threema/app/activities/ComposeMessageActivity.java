@@ -23,15 +23,25 @@ package ch.threema.app.activities;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Insets;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.view.View;
+import android.view.WindowInsets;
+import android.view.WindowInsetsAnimation;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.FragmentManager;
 import ch.threema.app.R;
 import ch.threema.app.ThreemaApplication;
@@ -90,6 +100,33 @@ public class ComposeMessageActivity extends ThreemaToolbarActivity implements Ge
 
 		if (!(masterKey != null && masterKey.isLocked())) {
 			this.initActivity(savedInstanceState);
+		}
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+			FrameLayout content = findViewById(R.id.compose);
+			content.setWindowInsetsAnimationCallback(new WindowInsetsAnimation.Callback(WindowInsetsAnimation.Callback.DISPATCH_MODE_STOP) {
+				@NonNull
+				@Override
+				public WindowInsets onProgress(@NonNull WindowInsets insets, @NonNull List<WindowInsetsAnimation> runningAnimations) {
+					Insets typesInset = insets.getInsets(WindowInsets.Type.ime());
+					Insets otherInset = insets.getInsets(WindowInsets.Type.systemBars());
+
+					Insets diff = Insets.subtract(typesInset, otherInset);
+					diff = Insets.max(diff, Insets.NONE);
+
+					content.setTranslationX(diff.left - diff.right);
+					content.setTranslationY(diff.top - diff.bottom);
+
+					return insets;
+				}
+			});
+			findViewById(R.id.compose_activity_parent).setOnApplyWindowInsetsListener((v, insets) -> {
+				Insets typeInsets = insets.getInsets(WindowInsets.Type.systemBars());
+				v.setPadding(typeInsets.left, typeInsets.top, typeInsets.right, typeInsets.bottom);
+
+				return WindowInsets.CONSUMED;
+			});
+			getWindow().setDecorFitsSystemWindows(false);
 		}
 	}
 
