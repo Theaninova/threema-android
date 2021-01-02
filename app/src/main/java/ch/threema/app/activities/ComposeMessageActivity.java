@@ -23,12 +23,14 @@ package ch.threema.app.activities;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.graphics.Insets;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowInsets;
 import android.view.WindowInsetsAnimation;
 import android.widget.FrameLayout;
@@ -120,13 +122,18 @@ public class ComposeMessageActivity extends ThreemaToolbarActivity implements Ge
 					return insets;
 				}
 			});
+			View toolbar = findViewById(R.id.appbar);
 			findViewById(R.id.compose_activity_parent).setOnApplyWindowInsetsListener((v, insets) -> {
 				Insets typeInsets = insets.getInsets(WindowInsets.Type.systemBars());
-				v.setPadding(typeInsets.left, typeInsets.top, typeInsets.right, typeInsets.bottom);
+				v.setPadding(typeInsets.left, 0, typeInsets.right, typeInsets.bottom);
+				toolbar.setPadding(0, typeInsets.top, 0, 0);
 
 				return WindowInsets.CONSUMED;
 			});
-			getWindow().setDecorFitsSystemWindows(false);
+			Window window = getWindow();
+			window.setDecorFitsSystemWindows(false);
+			window.setStatusBarColor(Color.TRANSPARENT);
+			window.setNavigationBarColor(Color.TRANSPARENT);
 		}
 	}
 
