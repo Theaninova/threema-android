@@ -132,7 +132,6 @@ public class ComposeMessageActivity extends ThreemaToolbarActivity implements Ge
 			});
 			Window window = getWindow();
 			window.setDecorFitsSystemWindows(false);
-			window.setStatusBarColor(Color.TRANSPARENT);
 			window.setNavigationBarColor(Color.TRANSPARENT);
 		}
 	}
