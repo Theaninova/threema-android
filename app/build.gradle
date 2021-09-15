@@ -88,8 +88,8 @@ android {
     // NOTE: When adjusting compileSdkVersion, buildToolsVersion or ndkVersion,
     //       make sure to adjust them in `scripts/Dockerfile` and
     //       `.gitlab-ci.yml` as well!
-    compileSdkVersion 30
-    buildToolsVersion '30.0.3'
+    compileSdkVersion 31
+    buildToolsVersion '31.0.0'
     ndkVersion '21.1.6352462'
 
     defaultConfig {
