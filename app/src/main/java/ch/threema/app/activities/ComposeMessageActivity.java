@@ -24,15 +24,13 @@ package ch.threema.app.activities;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.graphics.Insets;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowInsets;
-import android.view.WindowInsetsAnimation;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -42,8 +40,11 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsAnimationCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.graphics.Insets;
 import androidx.fragment.app.FragmentManager;
 import ch.threema.app.R;
 import ch.threema.app.ThreemaApplication;
@@ -84,7 +85,8 @@ public class ComposeMessageActivity extends ThreemaToolbarActivity implements Ge
 		}
 
 		@Override
-		public void onAudioPlayEnded(AbstractMessageModel messageModel) { }
+		public void onAudioPlayEnded(AbstractMessageModel messageModel) {
+		}
 	};
 
 	@Override
@@ -104,14 +106,18 @@ public class ComposeMessageActivity extends ThreemaToolbarActivity implements Ge
 			this.initActivity(savedInstanceState);
 		}
 
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-			FrameLayout content = findViewById(R.id.compose);
-			content.setWindowInsetsAnimationCallback(new WindowInsetsAnimation.Callback(WindowInsetsAnimation.Callback.DISPATCH_MODE_STOP) {
+		FrameLayout content = findViewById(R.id.compose);
+		ViewCompat.setWindowInsetsAnimationCallback(
+			content,
+			new WindowInsetsAnimationCompat.Callback(WindowInsetsAnimationCompat.Callback.DISPATCH_MODE_STOP) {
 				@NonNull
 				@Override
-				public WindowInsets onProgress(@NonNull WindowInsets insets, @NonNull List<WindowInsetsAnimation> runningAnimations) {
-					Insets typesInset = insets.getInsets(WindowInsets.Type.ime());
-					Insets otherInset = insets.getInsets(WindowInsets.Type.systemBars());
+				public WindowInsetsCompat onProgress(
+					@NonNull WindowInsetsCompat insets,
+					@NonNull List<WindowInsetsAnimationCompat> runningAnimations) {
+
+					Insets typesInset = insets.getInsets(WindowInsetsCompat.Type.ime());
+					Insets otherInset = insets.getInsets(WindowInsetsCompat.Type.systemBars());
 
 					Insets diff = Insets.subtract(typesInset, otherInset);
 					diff = Insets.max(diff, Insets.NONE);
@@ -122,16 +128,19 @@ public class ComposeMessageActivity extends ThreemaToolbarActivity implements Ge
 					return insets;
 				}
 			});
-			View toolbar = findViewById(R.id.appbar);
-			findViewById(R.id.compose_activity_parent).setOnApplyWindowInsetsListener((v, insets) -> {
-				Insets typeInsets = insets.getInsets(WindowInsets.Type.systemBars());
+		View toolbar = findViewById(R.id.appbar);
+		ViewCompat.setOnApplyWindowInsetsListener(
+			findViewById(R.id.compose_activity_parent),
+			(v, insets) -> {
+				Insets typeInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars());
 				v.setPadding(typeInsets.left, 0, typeInsets.right, typeInsets.bottom);
 				toolbar.setPadding(0, typeInsets.top, 0, 0);
 
-				return WindowInsets.CONSUMED;
+				return WindowInsetsCompat.CONSUMED;
 			});
-			Window window = getWindow();
-			window.setDecorFitsSystemWindows(false);
+		Window window = getWindow();
+		WindowCompat.setDecorFitsSystemWindows(window, false);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 			window.setNavigationBarColor(Color.TRANSPARENT);
 		}
 	}
@@ -249,13 +258,13 @@ public class ComposeMessageActivity extends ThreemaToolbarActivity implements Ge
 		super.onWindowFocusChanged(hasFocus);
 
 		if (ConfigUtils.isSamsungDevice() && !ConfigUtils.isTabletLayout() && composeMessageFragment != null) {
-            composeMessageFragment.onWindowFocusChanged(hasFocus);
-        }
+			composeMessageFragment.onWindowFocusChanged(hasFocus);
+		}
 	}
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode,
-								 final Intent intent) {
+	                             final Intent intent) {
 		switch (requestCode) {
 			case ID_HIDDEN_CHECK_ON_CREATE:
 				super.onActivityResult(requestCode, resultCode, intent);

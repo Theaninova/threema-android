@@ -208,6 +208,7 @@
 	</style>
 
 	<style name="Threema.ToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
+		<item name="android:statusBarColor">@color/material_primary</item>
 		<item name="android:background">@color/material_primary</item>
 		<item name="titleTextAppearance">@style/TextAppearance.Toolbar.Title</item>
 		<item name="subtitleTextAppearance">@style/TextAppearance.Toolbar.SubTitle</item>
@@ -221,6 +222,7 @@
 	</style>
 
 	<style name="Threema.ToolbarStyle.Dark" parent="Widget.MaterialComponents.Toolbar">
+		<item name="android:statusBarColor">@color/dark_toolbar_color</item>
 		<item name="android:background">@color/dark_toolbar_color</item>
 		<item name="titleTextAppearance">@style/TextAppearance.Toolbar.Title</item>
 		<item name="subtitleTextAppearance">@style/TextAppearance.Toolbar.SubTitle</item>

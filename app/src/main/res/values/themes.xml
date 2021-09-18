@@ -99,7 +99,7 @@
 		<item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
 		<item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
 		<item name="android:statusBarColor" tools:targetApi="21">@color/material_primary</item>
-		<item name="android:navigationBarColor" tools:targetApi="21">@color/material_primary</item>
+		<item name="android:navigationBarColor" tools:targetApi="21">@color/activity_background_secondary</item>
 
 		<!-- Material styles -->
 		<item name="materialButtonStyle">@style/Threema.AppButton</item>
@@ -272,8 +272,8 @@
 		<!-- Status bar and navigation bar color -->
 		<item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
 		<item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
-		<item name="android:statusBarColor" tools:targetApi="21">@color/dark_material_level2</item>
-		<item name="android:navigationBarColor" tools:targetApi="21">@color/dark_material_level2</item>
+		<item name="android:statusBarColor" tools:targetApi="21">@color/dark_toolbar_color</item>
+		<item name="android:navigationBarColor" tools:targetApi="21">@color/dark_toolbar_color</item>
 
 		<item name="windowActionModeOverlay">true</item>
 		<item name="android:actionModeCloseDrawable">@drawable/ic_close_white_24dp</item>
@@ -445,8 +445,8 @@
 		<!-- Status bar and navigation bar color -->
 		<item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
 		<item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
-		<item name="android:statusBarColor" tools:targetApi="21">@color/dark_material_level2</item>
-		<item name="android:navigationBarColor" tools:targetApi="21">@color/dark_material_level2</item>
+		<item name="android:statusBarColor" tools:targetApi="21">@color/dark_toolbar_color</item>
+		<item name="android:navigationBarColor" tools:targetApi="21">@color/dark_material_level0</item>
 
 		<!-- Material styles -->
 		<item name="materialButtonStyle">@style/Threema.AppButton.Dark</item>
