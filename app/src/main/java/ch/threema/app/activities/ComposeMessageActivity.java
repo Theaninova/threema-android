@@ -242,6 +242,14 @@ public class ComposeMessageActivity extends ThreemaToolbarActivity implements Ge
 	@Override
 	public void onResume() {
 		logger.debug("onResume");
+
+		// If the app gets paused, the keyboard disappears.
+		// However the insets listener is not informed about
+		// that, so we have to do this manually.
+		FrameLayout content = findViewById(R.id.compose);
+		content.setTranslationY(0);
+		content.setTranslationX(0);
+
 		super.onResume();
 	}
 
