@@ -1143,7 +1143,6 @@ public class ConfigUtils {
 
 			if (orgTheme != R.style.Theme_Threema_TransparentStatusbar) {
 				activity.getWindow().addFlags(FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-				activity.getWindow().setStatusBarColor(Color.BLACK);
 				if (Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
 					View decorView = activity.getWindow().getDecorView();
 					decorView.setSystemUiVisibility(FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS & ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
@@ -1151,10 +1150,7 @@ public class ConfigUtils {
 			}
 		} else {
 			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-				activity.getWindow().setNavigationBarColor(Color.BLACK);
-				if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP_MR1) {
-					activity.getWindow().setStatusBarColor(Color.BLACK);
-				} else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
+				if (Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
 					View decorView = activity.getWindow().getDecorView();
 					decorView.setSystemUiVisibility(FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS | SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 				}
