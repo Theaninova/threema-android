@@ -23,14 +23,25 @@ package ch.threema.app.activities;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.WindowManager;
+import android.view.View;
+import android.view.Window;
 import android.widget.FrameLayout;
 
 import org.slf4j.Logger;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsAnimationCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.graphics.Insets;
 import androidx.fragment.app.FragmentManager;
 import ch.threema.app.R;
 import ch.threema.app.ThreemaApplication;
@@ -89,6 +100,44 @@ public class ComposeMessageActivity extends ThreemaToolbarActivity implements Ge
 
 		if (!(masterKey != null && masterKey.isLocked())) {
 			this.initActivity(savedInstanceState);
+		}
+
+		FrameLayout content = findViewById(R.id.compose);
+		ViewCompat.setWindowInsetsAnimationCallback(
+			content,
+			new WindowInsetsAnimationCompat.Callback(WindowInsetsAnimationCompat.Callback.DISPATCH_MODE_STOP) {
+				@NonNull
+				@Override
+				public WindowInsetsCompat onProgress(
+					@NonNull WindowInsetsCompat insets,
+					@NonNull List<WindowInsetsAnimationCompat> runningAnimations) {
+
+					Insets typesInset = insets.getInsets(WindowInsetsCompat.Type.ime());
+					Insets otherInset = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+
+					Insets diff = Insets.subtract(typesInset, otherInset);
+					diff = Insets.max(diff, Insets.NONE);
+
+					content.setTranslationX(diff.left - diff.right);
+					content.setTranslationY(diff.top - diff.bottom);
+
+					return insets;
+				}
+			});
+		View toolbar = findViewById(R.id.appbar);
+		ViewCompat.setOnApplyWindowInsetsListener(
+			findViewById(R.id.compose_activity_parent),
+			(v, insets) -> {
+				Insets typeInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+				v.setPadding(typeInsets.left, 0, typeInsets.right, typeInsets.bottom);
+				toolbar.setPadding(0, typeInsets.top, 0, 0);
+
+				return WindowInsetsCompat.CONSUMED;
+			});
+		Window window = getWindow();
+		WindowCompat.setDecorFitsSystemWindows(window, false);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			window.setNavigationBarColor(Color.TRANSPARENT);
 		}
 	}
 
@@ -189,6 +238,14 @@ public class ComposeMessageActivity extends ThreemaToolbarActivity implements Ge
 	@Override
 	public void onResume() {
 		logger.debug("onResume");
+
+		// If the app gets paused, the keyboard disappears.
+		// However the insets listener is not informed about
+		// that, so we have to do this manually.
+		FrameLayout content = findViewById(R.id.compose);
+		content.setTranslationY(0);
+		content.setTranslationX(0);
+
 		super.onResume();
 
 		// Set the soft input mode to resize when activity resumes because it is set to adjust nothing while it is paused

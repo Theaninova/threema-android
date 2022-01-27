@@ -1,0 +1,79 @@
+<animated-vector
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:aapt="http://schemas.android.com/aapt"
+	android:drawable="@drawable/ic_chat_bubble_outline">
+	<target android:name="top_line">
+		<aapt:attr name="android:animation">
+			<objectAnimator
+				android:duration="75"
+				android:interpolator="@android:anim/accelerate_interpolator"
+				android:propertyName="trimPathStart"
+				android:startOffset="0"
+				android:valueFrom="0"
+				android:valueTo="1"
+				android:valueType="floatType" />
+		</aapt:attr>
+	</target>
+	<target android:name="bottom_line">
+		<aapt:attr name="android:animation">
+			<objectAnimator
+				android:duration="75"
+				android:interpolator="@android:anim/accelerate_interpolator"
+				android:propertyName="trimPathStart"
+				android:startOffset="50"
+				android:valueFrom="0"
+				android:valueTo="1"
+				android:valueType="floatType" />
+		</aapt:attr>
+	</target>
+	<target android:name="clip_lines">
+		<aapt:attr name="android:animation">
+			<set>
+				<!-- TopLine -->
+				<objectAnimator
+					android:duration="75"
+					android:interpolator="@android:anim/decelerate_interpolator"
+					android:propertyName="pathData"
+					android:startOffset="150"
+					android:valueFrom="M 20 2C 20.53 2 21.039 2.211 21.414 2.586C 21.789 2.961 22 3.47 22 4L 22 16C 22 16.53 21.789 17.039 21.414 17.414C 21.039 17.789 20.53 18 20 18L 6 18L 2 22L 2 4C 2 2.89 2.9 2 4 2L 20 2 M 4 8ZM 5 11L5 11L5 13L5 13L5 11
+						M 5 7
+						L5 7L5 9
+						L5 9L5 7Z"
+					android:valueTo="M 20 2C 20.53 2 21.039 2.211 21.414 2.586C 21.789 2.961 22 3.47 22 4L 22 16C 22 16.53 21.789 17.039 21.414 17.414C 21.039 17.789 20.53 18 20 18L 6 18L 2 22L 2 4C 2 2.89 2.9 2 4 2L 20 2 M 4 8ZM 5 11L5 11L5 13L5 13L5 11
+						M 5 7
+						L5 7L5 9
+						L18 9L18 7Z"
+					android:valueType="pathType" />
+				<!-- Bottom line -->
+				<objectAnimator
+					android:duration="75"
+					android:interpolator="@android:anim/decelerate_interpolator"
+					android:propertyName="pathData"
+					android:startOffset="225"
+					android:valueFrom="M 20 2C 20.53 2 21.039 2.211 21.414 2.586C 21.789 2.961 22 3.47 22 4L 22 16C 22 16.53 21.789 17.039 21.414 17.414C 21.039 17.789 20.53 18 20 18L 6 18L 2 22L 2 4C 2 2.89 2.9 2 4 2L 20 2 M 4 8Z
+						M 5 11
+						L5 11L5 13
+						L5 13L5 11
+						M 5 7L5 7L5 9L18 9L18 7Z"
+					android:valueTo="M 20 2C 20.53 2 21.039 2.211 21.414 2.586C 21.789 2.961 22 3.47 22 4L 22 16C 22 16.53 21.789 17.039 21.414 17.414C 21.039 17.789 20.53 18 20 18L 6 18L 2 22L 2 4C 2 2.89 2.9 2 4 2L 20 2 M 4 8Z
+						M 5 11
+						L5 11L5 13
+						L16 13L16 11
+						M 5 7L5 7L5 9L18 9L18 7Z"
+					android:valueType="pathType" />
+			</set>
+		</aapt:attr>
+	</target>
+	<target android:name="fill">
+		<aapt:attr name="android:animation">
+			<objectAnimator
+				android:duration="150"
+				android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+				android:propertyName="translateX"
+				android:startOffset="100"
+				android:valueFrom="-16"
+				android:valueTo="0"
+				android:valueType="floatType" />
+		</aapt:attr>
+	</target>
+</animated-vector>

@@ -1,0 +1,35 @@
+<!-- drawable/account_circle_outline.xml
+This is a hand-written version of the material icon that cuts some corners to be more
+easy to animate
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+	android:width="24dp"
+	android:height="24dp"
+	android:viewportHeight="24"
+	android:viewportWidth="24">
+	<group>
+		<!-- This is the outer circle without the head -->
+		<clip-path android:pathData="
+			M12,2
+			a9,9 0 1,0 0.1,0
+			L12,2
+			M12,10.5
+			a3,3 0 1,1 0.1,0
+			Z" />
+		<path
+			android:name="body"
+			android:pathData="M12,6.5a14,14 0 1,0 0.1,0Z"
+			android:strokeColor="#000"
+			android:strokeWidth="12" />
+	</group>
+	<path
+		android:name="head"
+		android:pathData="M12,4a4,4 0 1,0 0.1,0Z"
+		android:strokeColor="#000"
+		android:strokeWidth="1" />
+	<path
+		android:name="outer_ring"
+		android:pathData="M12,2a9,9 0 1,0 0.1,0Z"
+		android:strokeColor="#000"
+		android:strokeWidth="2" />
+</vector>
