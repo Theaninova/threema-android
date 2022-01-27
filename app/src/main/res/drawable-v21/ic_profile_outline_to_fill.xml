@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:aapt="http://schemas.android.com/aapt"
+	android:drawable="@drawable/ic_profile_outline">
+	<target android:name="body">
+		<aapt:attr name="android:animation">
+			<set>
+				<objectAnimator
+					android:duration="200"
+					android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+					android:propertyName="pathData"
+					android:valueFrom="M12,14.5a8,8 0 1,0 0.1,0Z"
+					android:valueTo="M12,6.5a14,14 0 1,0 0.1,0Z"
+					android:valueType="pathType" />
+				<objectAnimator
+					android:duration="200"
+					android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+					android:propertyName="strokeWidth"
+					android:valueFrom="2"
+					android:valueTo="12"
+					android:valueType="floatType" />
+			</set>
+		</aapt:attr>
+	</target>
+	<target android:name="head">
+		<aapt:attr name="android:animation">
+			<set>
+				<objectAnimator
+					android:duration="200"
+					android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+					android:propertyName="pathData"
+					android:valueFrom="M12,6.5a2.5,2.5 0 1,0 0.1,0Z"
+					android:valueTo="M12,4a4,4 0 1,0 0.1,0Z"
+					android:valueType="pathType" />
+				<objectAnimator
+					android:duration="20"
+					android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+					android:propertyName="strokeWidth"
+					android:valueFrom="2"
+					android:valueTo="1"
+					android:valueType="floatType" />
+			</set>
+		</aapt:attr>
+	</target>
+</animated-vector>

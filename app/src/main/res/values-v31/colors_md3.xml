@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="md3_primary_10">@android:color/system_accent1_900</color>
+	<color name="md3_primary_20">@android:color/system_accent1_800</color>
+	<color name="md3_primary_30">@android:color/system_accent1_700</color>
+	<color name="md3_primary_40">@android:color/system_accent1_600</color>
+	<color name="md3_primary_80">@android:color/system_accent1_200</color>
+	<color name="md3_primary_90">@android:color/system_accent1_100</color>
+	<color name="md3_primary_100">@android:color/system_accent1_0</color>
+
+	<color name="md3_secondary_10">@android:color/system_accent2_900</color>
+	<color name="md3_secondary_20">@android:color/system_accent2_800</color>
+	<color name="md3_secondary_30">@android:color/system_accent2_700</color>
+	<color name="md3_secondary_40">@android:color/system_accent2_600</color>
+	<color name="md3_secondary_80">@android:color/system_accent2_200</color>
+	<color name="md3_secondary_90">@android:color/system_accent2_100</color>
+	<color name="md3_secondary_100">@android:color/system_accent2_0</color>
+
+	<color name="md3_tertiary_10">@android:color/system_accent3_900</color>
+	<color name="md3_tertiary_20">@android:color/system_accent3_800</color>
+	<color name="md3_tertiary_30">@android:color/system_accent3_700</color>
+	<color name="md3_tertiary_40">@android:color/system_accent3_600</color>
+	<color name="md3_tertiary_80">@android:color/system_accent3_200</color>
+	<color name="md3_tertiary_90">@android:color/system_accent3_100</color>
+	<color name="md3_tertiary_100">@android:color/system_accent3_0</color>
+
+	<color name="md3_neutral_10">@android:color/system_neutral1_900</color>
+	<color name="md3_neutral_30">@android:color/system_neutral1_700</color>
+	<color name="md3_neutral_90">@android:color/system_neutral1_100</color>
+	<color name="md3_neutral_99">@android:color/system_neutral1_10</color>
+
+	<color name="md3_neutral_variant_10">@android:color/system_neutral2_900</color>
+	<color name="md3_neutral_variant_30">@android:color/system_neutral2_700</color>
+	<color name="md3_neutral_variant_50">@android:color/system_neutral2_500</color>
+	<color name="md3_neutral_variant_60">@android:color/system_neutral2_400</color>
+	<color name="md3_neutral_variant_80">@android:color/system_neutral2_200</color>
+	<color name="md3_neutral_variant_90">@android:color/system_neutral2_100</color>
+	<color name="md3_neutral_variant_99">@android:color/system_neutral2_10</color>
+
+
+	<color name="md_theme_light_primary">@color/md3_primary_40</color>
+	<color name="md_theme_light_onPrimary">@color/md3_primary_100</color>
+	<color name="md_theme_light_primaryContainer">@color/md3_primary_90</color>
+	<color name="md_theme_light_onPrimaryContainer">@color/md3_primary_10</color>
+	<color name="md_theme_light_secondary">@color/md3_secondary_40</color>
+	<color name="md_theme_light_onSecondary">@color/md3_secondary_100</color>
+	<color name="md_theme_light_secondaryContainer">@color/md3_secondary_90</color>
+	<color name="md_theme_light_onSecondaryContainer">@color/md3_secondary_10</color>
+	<color name="md_theme_light_tertiary">@color/md3_tertiary_40</color>
+	<color name="md_theme_light_onTertiary">@color/md3_tertiary_100</color>
+	<color name="md_theme_light_tertiaryContainer">@color/md3_tertiary_90</color>
+	<color name="md_theme_light_onTertiaryContainer">@color/md3_tertiary_10</color>
+	<color name="md_theme_light_error">#BA1B1B</color>
+	<color name="md_theme_light_errorContainer">#FFDAD4</color>
+	<color name="md_theme_light_onError">#FFFFFF</color>
+	<color name="md_theme_light_onErrorContainer">#410001</color>
+	<color name="md_theme_light_background">@color/md3_neutral_99</color>
+	<color name="md_theme_light_onBackground">@color/md3_neutral_10</color>
+	<color name="md_theme_light_surface">@color/md3_neutral_99</color>
+	<color name="md_theme_light_onSurface">@color/md3_neutral_10</color>
+	<color name="md_theme_light_surfaceVariant">@color/md3_neutral_variant_90</color>
+	<color name="md_theme_light_onSurfaceVariant">@color/md3_neutral_variant_30</color>
+	<color name="md_theme_light_outline">@color/md3_neutral_variant_50</color>
+
+	<color name="md_theme_dark_primary">@color/md3_primary_80</color>
+	<color name="md_theme_dark_onPrimary">@color/md3_primary_20</color>
+	<color name="md_theme_dark_primaryContainer">@color/md3_primary_30</color>
+	<color name="md_theme_dark_onPrimaryContainer">@color/md3_primary_90</color>
+	<color name="md_theme_dark_secondary">@color/md3_secondary_80</color>
+	<color name="md_theme_dark_onSecondary">@color/md3_secondary_20</color>
+	<color name="md_theme_dark_secondaryContainer">@color/md3_secondary_30</color>
+	<color name="md_theme_dark_onSecondaryContainer">@color/md3_secondary_90</color>
+	<color name="md_theme_dark_tertiary">@color/md3_tertiary_80</color>
+	<color name="md_theme_dark_onTertiary">@color/md3_tertiary_20</color>
+	<color name="md_theme_dark_tertiaryContainer">@color/md3_tertiary_30</color>
+	<color name="md_theme_dark_onTertiaryContainer">@color/md3_tertiary_90</color>
+	<color name="md_theme_dark_error">#BA1B1B</color>
+	<color name="md_theme_dark_errorContainer">#FFDAD4</color>
+	<color name="md_theme_dark_onError">#FFFFFF</color>
+	<color name="md_theme_dark_onErrorContainer">#410001</color>
+	<color name="md_theme_dark_background">@color/md3_neutral_10</color>
+	<color name="md_theme_dark_onBackground">@color/md3_neutral_90</color>
+	<color name="md_theme_dark_surface">@color/md3_neutral_10</color>
+	<color name="md_theme_dark_onSurface">@color/md3_neutral_90</color>
+	<color name="md_theme_dark_surfaceVariant">@color/md3_neutral_variant_30</color>
+	<color name="md_theme_dark_onSurfaceVariant">@color/md3_neutral_variant_80</color>
+	<color name="md_theme_dark_outline">@color/md3_neutral_variant_60</color>
+
+	<color name="error">#BA1B1B</color>
+</resources>
